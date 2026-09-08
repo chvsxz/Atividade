@@ -1,0 +1,73 @@
+class DispositivoRede:
+
+    def __init__(self, ip, hostname, ativo):
+        self.ip = ip
+        self.hostname = hostname
+        self.ativo = ativo
+
+    def verificar_status(self):
+        if ativo == True:
+                print('Online')
+        else:
+            print('Offline')
+
+
+class Servidor(DispositivoRede):
+
+    def __init__(self, ip, hostname, sistema_operacional, ativo):
+        self.ip = ip
+        self.hostname = hostname
+        self.ativo = ativo
+        self.sistema_operacional = sistema_operacional
+
+    def verificar_status(self):
+        if self.ativo == True:
+            print(f"Servidor {self.hostname} — IP: {self.ip} — OS: {self.sistema_operacional} — Status: ONLINE")
+        else:
+            print(f"Servidor {self.hostname} — IP: {self.ip} — OS: {self.sistema_operacional} — Status: OFFLINE")
+
+class Roteador(DispositivoRede):
+
+    def __init__(self, ip, hostname, numero_portas, ativo):
+        self.ip = ip
+        self.hostname = hostname
+        self.ativo = ativo
+        self.numero_portas = numero_portas
+
+    def verificar_status(self):
+        if self.ativo == True:
+            print(f"Roteador {self.hostname} — IP: {self.ip} — Portas: {self.numero_portas} — Status: ONLINE")
+        else:
+            print(f"Roteador {self.hostname} — IP: {self.ip} — Portas: {self.numero_portas} — Status: OFFLINE")
+
+class Switch(DispositivoRede):
+
+    def __init__(self, ip, hostname, velocidade_portas, ativo):
+        self.ip = ip
+        self.hostname = hostname
+        self.ativo = ativo
+        self.velocidade_portas = velocidade_portas
+
+    def verificar_status(self):
+        if self.ativo == True:
+            print(f"Switch {self.hostname} — IP: {self.ip} — Velocidade: {self.velocidade_portas} — Status: ONLINE")
+        else:
+            print(f"Switch {self.hostname} — IP: {self.ip} — Velocidade: {self.velocidade_portas} — Status: OFFLINE")
+
+
+
+srv1 = Servidor("192.168.0.10", "SRV-WEB", "Linux", True)
+srv2 = Servidor("192.168.0.11", "SRV-DB", "Windows", False)
+
+rtr1 = Roteador("192.168.0.1", "RTR-01", 8, True)
+rtr2 = Roteador("192.168.0.2", "RTR-02", 16, True)
+
+sw1 = Switch("192.168.0.20", "SW-CORE", "1Gbps", True)
+sw2 = Switch("192.168.0.21", "SW-ACC", "10Gbps", False)
+
+
+dispositivos = [srv1, srv2, rtr1, rtr2, sw1, sw2]
+
+
+for d in dispositivos:
+    d.verificar_status()
